@@ -1,0 +1,113 @@
+<!--Product Line Up Start -->
+<div class="product-listing">
+    <div class="container">
+        <div class="row no-gutters">
+
+            <!-- START STICKY NAV -->
+            <div class="col-12 col-lg-4 order-2 order-lg-1 sticky">
+                <div id="product-filter-nav" class="product-filter-nav mb-3">
+                    <div class="product-category">
+                        <h5 class="filter-heading  text-center text-lg-left">Category</h5>
+                        <ul>
+                            <li><a href="/productList/?categoryid=55b30324-5a61-445b-463a-09aca124723b">Conan</a></li>
+                            <li><a href="/productList/?categoryid=55b30324-5a61-445b-563a-09aca124723b">Doremon </a></li>
+                            <li><a href="/productList/?categoryid=55b30324-5a61-445b-663a-09aca124723b">Lớp 7</a></li>
+                            <li><a href="/productList/?categoryid=55b30324-5a61-445b-763a-09aca124723b">Lớp 12</a></li>
+                        </ul>
+                    </div>
+                    <div class="product-price">
+                        <h5 class="filter-heading  text-center text-lg-left">Sort Price</h5>
+                        <ul>
+                            <li><a href="/productList/?sort=2">Increase</a></li>
+                            <li><a href="/productList/?sort=1">Decrease</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="product-add mt-4">
+                        <div class="row no-gutters">
+                            <div class="col-12">
+                                <img src="\book-shop\img\advertisement.jpg" alt="images">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END STICKY NAV -->
+
+            <!-- START PRODUCT COL 8 -->
+            <div class="col-md-12 col-lg-8 order-1 order-lg-2">
+                <div class="row">
+                    
+                    <!-- START LISTING HEADING -->
+                    <div class="pr-0 col-12 row product-listing-heading">
+            <h1 class="p-0 col-6 heading text-left">Product Listing</h1>
+            <div class="p-0 col-6">
+              <form onsubmit="return searchBook()">
+                <div class="m-0 input-group search-box-form">
+                  <input type="text" class="form-control" placeholder="Search Here" aria-label="Search Here"
+                    id="nameBook" name="search">
+                  <div class="input-group-prepend">
+                    <button class="btn input-group-text" type="submit" id="basic-addon2"><i
+                        class="fas fa-search"></i></button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            </div>
+                    <!-- END LISTING HEADING -->
+                    
+                    <!-- START PRODUCT LISTING SECTION -->
+                    <div class="col-12 product-listing-products">
+                        
+                        <!-- START DISPLAY PRODUCT -->
+                        <div class="product-list row">
+                            {{#each books}}
+                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
+                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
+                                    <div class="item p-item-img">
+                                            <img src="book-shop\img\book-1.jpg" alt="images">
+                                        <div class="text-center d-flex justify-content-center align-items-center">
+                                            <a class="listing-cart-icon" href="/shopCart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="item p-item-img">
+                                        <img src="book-shop\img\book-1-1.jpg" alt="images">
+                                        <div class="text-center d-flex justify-content-center align-items-center">
+                                            <a class="listing-cart-icon" href="/shopCart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-item-detail">
+                                    <h4 class="text-center p-item-name"><a href="/productDetail/{{id}}">{{name}}</a></h4>
+                                    <p class="text-center p-item-price">{{price}}</p>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <!-- END DISPLAY PRODUCT -->
+                        
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination float-right mb-2">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="/productList/?page=0">0</a></li>
+                                <li class="page-item"><a class="page-link" href="/productList/?page=1">1</a></li>
+                                <li class="page-item"><a class="page-link" href="/productList/?page=2">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav> 
+
+                    </div>
+                    <!-- END PRODUCT LISTING SECTION -->
+                </div>
+            </div>
+            <!-- END PRODUCT COL 8 -->
+
+        </div>
+    </div>
+</div>
+<!--Product Line Up End-->
