@@ -6,7 +6,7 @@
                 <div class="row mb-4 px-3">
                         <h6 class="mb-0 mr-4 mt-2">SIGN UP</h6>
                 </div>
-                <form method="post">
+                <form method="post" class="form" id="form-1">
                     <div class="form-group">
                         <label>Email:</label>
                         <input type="text" name="email" id="email"/>
@@ -32,3 +32,15 @@
     </div>
 </div>
 <script src="/book-shop/js/validator.js"></script>
+<script>
+    Validator({
+        form: "#form-1",
+        rules: [
+            Validator.isEmail("#email"),
+            Validator.minLength("#password", 3),
+            Validator.isConfirmed("#password-confirm", function(){
+                return document.querySelector("#form-1 #password").value;
+            })
+        ]
+    });
+</script>
