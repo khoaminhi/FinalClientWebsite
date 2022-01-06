@@ -4,11 +4,14 @@ var router = express.Router();
 
 router.use(express.static('public'));
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Login' });
+  res.render('login', { title: 'Login', wrongPassword: req.query.wrongPassword });
 });
 
 router.post('/',
-  passport.authenticate('local'),
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login?wrongPassword'
+  }),
   function(req, res){
     console.log('passport auth success!!')
     if(req.user){
