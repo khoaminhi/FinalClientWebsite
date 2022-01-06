@@ -8,6 +8,7 @@ exports.productList = async (req, res) => {
     const sort = req.query.sort;
     const page = req.query.page;
     const search = req.query.search;
+    const publisherid = req.query.publisherid;
     if(categoryid)
     {
         console.log("Category: " + categoryid)
@@ -16,6 +17,20 @@ exports.productList = async (req, res) => {
         for (let i=0; i < all_books.length; i++)
         {
             if(all_books[i]['categoryid'] === categoryid)
+            {
+                books.push(all_books[i])
+            }
+        }
+        res.render('productList', {books});
+    }
+    else if(publisherid)
+    {
+        console.log("Publisher: " + categoryid)
+        const all_books = await productListService.list();
+        books = []
+        for (let i=0; i < all_books.length; i++)
+        {
+            if(all_books[i]['publisherid'] === publisherid)
             {
                 books.push(all_books[i])
             }
