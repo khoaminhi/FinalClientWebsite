@@ -12,7 +12,6 @@ module.exports = function(sequelize, DataTypes) {
     customerid: {
       type: DataTypes.UUID,
       allowNull: false,
-      primaryKey: true,
       references: {
         model: 'customers',
         key: 'id'
@@ -21,7 +20,6 @@ module.exports = function(sequelize, DataTypes) {
     bookid: {
       type: DataTypes.UUID,
       allowNull: false,
-      primaryKey: true,
       references: {
         model: 'books',
         key: 'id'
@@ -30,6 +28,16 @@ module.exports = function(sequelize, DataTypes) {
     isarchived: {
       type: DataTypes.CHAR(1),
       allowNull: true
+    },
+    customersessionid: {
+      type: DataTypes.UUID,
+      allowNull: false
+    },
+    cartid: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
     }
   }, {
     sequelize,
@@ -41,8 +49,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "carts_pkey",
         unique: true,
         fields: [
-          { name: "customerid" },
-          { name: "bookid" },
+          { name: "cartid" },
         ]
       },
     ]

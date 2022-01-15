@@ -24,8 +24,6 @@ function initModels(sequelize) {
   var invoicesdetail = _invoicesdetail(sequelize, DataTypes);
   var publishers = _publishers(sequelize, DataTypes);
 
-  books.belongsToMany(customers, { as: 'customerid_customers', through: carts, foreignKey: "bookid", otherKey: "customerid" });
-  customers.belongsToMany(books, { as: 'bookid_books', through: carts, foreignKey: "customerid", otherKey: "bookid" });
   carts.belongsTo(books, { as: "book", foreignKey: "bookid"});
   books.hasMany(carts, { as: "carts", foreignKey: "bookid"});
   comments.belongsTo(books, { as: "book", foreignKey: "bookid"});

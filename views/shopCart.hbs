@@ -4,129 +4,79 @@
         <div class="container">
             <!-- START SHOP CART TABLE -->
             <div class="row pt-5">
-                <div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                <div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms"
+                    style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
                     <div class="table-responsive">
-                        <table class="table table-bordered border-radius">
+                        <table id="example" class="table table-bordered border-radius">
                             <thead>
-                            <tr>
-                                <th class="darkcolor">Product</th>
-                                <th class="darkcolor">Price</th>
-                                <th class="darkcolor">Quantity</th>
-                                <th class="darkcolor">Total</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th class="darkcolor">Sản phẩm</th>
+                                    <th class="darkcolor">Giá</th>
+                                    <th class="darkcolor">Số lượng</th>
+                                    <th class="darkcolor">Tổng</th>
+                                    <th class="darkcolor"> Chọn thanh toán</th>
+                                    <th class="darkcolor"> Xoá</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-table product-detail-cart">
+                                {{#each productCart}}
+                                <tr class="rowsSelected" id="{{cartid}}">
+                                    <td>
+                                        <div class="d-table product-detail-cart">
 
-                                        <div class="media">
-                                            <div class="row no-gutters">
+                                            <div class="media">
+                                                <div class="row no-gutters">
 
-                                                <div class="col-12 col-lg-2 product-detail-cart-image">
-                                                <a class="shopping-product" href="javascript:void(0)"><img src="book-shop\img\shopcart-1.jpg" alt="Generic placeholder image"></a>
-                                                </div>
+                                                    <div class="col-12 col-lg-3 product-detail-cart-image">
+                                                        <a class="shopping-product" href="javascript:void(0)"><img
+                                                                src="book-shop\img\shopcart-1.jpg"
+                                                                alt="Generic placeholder image">
+                                                        </a>
+                                                    </div>
 
-                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
-                                                    <div class="media-body ml-lg-3">
-                                                        <h4 class="product-name"><a href="/productDetail">Love Does</a></h4>
-                                                        <p class="product-des">We offer the most complete in the country</p>
+                                                    <div class="col-12 col-lg-9 mt-auto product-detail-cart-data">
+                                                        <div class="media-body ml-lg-3">
+                                                            <h4 class="product-name">
+                                                                <a href="/productDetail"> {{name}} </a>
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 class="text-center amount">$130.00</h4>
-                                </td>
-                                <td class="text-center">
-                                    <div class="quote text-center mt-1">
-                                        <input type="number" placeholder="1" class="quote" min="1" max="100">
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 class="text-center amount">$136.00</h4>
-                                </td>
-                                <td class="text-center"><a class="btn-close" href="javascript:void(0)"><i class="lni-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-table product-detail-cart">
-
-                                        <div class="media">
-                                            <div class="row no-gutters">
-
-                                                <div class="col-12 col-lg-2 product-detail-cart-image">
-                                                    <a class="shopping-product" href="javascript:void(0)"><img src="book-shop\img\shopcart-2.jpg" alt="Generic placeholder image"></a>
-                                                </div>
-
-                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
-                                                    <div class="media-body ml-lg-3">
-                                                        <h4 class="product-name"><a href="/productDetail">The Last Stand</a></h4>
-                                                        <p class="product-des">We offer the most complete in the country</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </td>
+                                    <td>
+                                        <h4 class="text-center amount">{{price}}đ</h4>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="quote text-center mt-1">
+                                            <input class='inputNumberQuantity' type="number" placeholder="1"
+                                                class="quote" min="1" max="100" value={{cartquantity}}
+                                                id='{{cartid}}'
+                                            >
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 class="text-center d-table-price amount">$100.00</h4>
-                                </td>
-                                <td class="text-center">
-                                    <div class="quote text-center mt-1">
-                                        <input type="number" placeholder="1" class="quote" min="1" max="100">
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 class="text-center amount">$106.00</h4>
-                                </td>
-                                <td class="text-center"><a class="btn-close" href="javascript:void(0)"><i class="lni-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-table product-detail-cart">
-
-                                        <div class="media">
-                                            <div class="row no-gutters">
-
-                                                <div class="col-12 col-lg-2 product-detail-cart-image">
-                                                    <a class="shopping-product" href="javascript:void(0)"><img src="book-shop\img\shopcart-1.jpg" alt="Generic placeholder image"></a>
-                                                </div>
-
-                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
-                                                    <div class="media-body ml-lg-3">
-                                                        <h4 class="product-name"><a href="/productDetail">The Road</a></h4>
-                                                        <p class="product-des">We offer the most complete in the country</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 class="text-center d-table-price amount">$150.00</h4>
-                                </td>
-                                <td class="text-center">
-                                    <div class="quote text-center mt-1">
-                                        <input type="number" placeholder="1" class="quote" min="1" max="100">
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 class="text-center amount">$150.00</h4>
-                                </td>
-                                <td class="text-center"><a class="btn-close" href="javascript:void(0)"><i class="lni-trash"></i></a></td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        <h4 id='totalProductMoney' class="text-center amount">{{total}}đ</h4>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" class="checkBoxClass" name='{{cartid}}'>
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn-close" href="javascript:void(0)">
+                                            <i class="lni-trash" id='{{cartid}}'></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
                     <div class="apply_coupon">
-                        <div class="row">
-                            <div class="col-12 text-left">
-                                <a href="/shopCart" class="btn yellow-color-green-gradient-btn">UPDATE</a>
-                                <a href="/shopCart" class="btn green-color-yellow-gradient-btn ">CHECKOUT</a>
+                        <div style="text-align: right;">
+                            <div>
+                                <button id='calculateTotalMoney' class="btn green-color-yellow-gradient-btn">Cập nhật và
+                                    Tính</button>
                             </div>
                         </div>
                     </div>
@@ -137,32 +87,24 @@
             <div class="row pt-5">
                 <div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
                     <div class="calculate-shipping">
-                        <h4 class="heading">Calculate Shipping</h4>
+                        <h4 class="heading">Nhập địa chỉ</h4>
                         <form>
                             <div class="form-group">
                                 <label class="select form-control">
-                                    <select name="country" id="states">
-                                        <option>USA</option>
-                                        <option>Canada</option>
-                                        <option>Chile</option>
-                                        <option>France</option>
+                                    <select name="city" id="city">
+                                        <option>Hồ Chí Minh</option>
+                                        <option>Hà Nội</option>
                                     </select>
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label class="select form-control">
-                                    <select name="country" id="state">
-                                        <option>USA</option>
-                                        <option>Canada</option>
-                                        <option>Chile</option>
-                                        <option>France</option>
+                                    <select name="district" id="district">
+                                        <option>Quận 1</option>
+                                        <option>Quận 3</option>
                                     </select>
                                 </label>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Postal/Zip Code">
-                            </div>
-                            <a href="#" class="btn yellow-color-green-gradient-btn">Calculate</a>
                         </form>
                     </div>
                 </div>
@@ -171,39 +113,40 @@
                         <h4 class="heading">Card Total</h4>
                         <table>
                             <tr>
-                                <td>Subtotal</td>
-                                <td>$251.00</td>
-                            </tr>
-                            <tr>
-                                <td>Shipping</td>
+                                <td>
+                                    Shipping
+                                </td>
                                 <td>
                                     <ul class="color-grey">
                                         <li>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="flat-rate" name="shipping" class="custom-control-input" checked="">
-                                                <label class="custom-control-label" for="flat-rate">Flat Rate : $49.00</label>
+                                                <input type="radio" id="online-shipping" name="shipping"
+                                                    class="custom-control-input">
+                                                <label class="custom-control-label" for="online-shipping">
+                                                    Thanh toan online
+                                                </label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
-                                                <label class="custom-control-label" for="free-shipping">Free Shipping</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="cod-shipping" name="shipping" class="custom-control-input">
-                                                <label class="custom-control-label" for="cod-shipping">Cash on Delivery</label>
+                                                <input type="radio" id="cod-shipping" name="shipping"
+                                                    class="custom-control-input">
+                                                <label class="custom-control-label" for="cod-shipping">
+                                                    Thanh toan tien mat
+                                                </label>
                                             </div>
                                         </li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Total</td>
-                                <td>$300.00</td>
+                                <td>Tong tien</td>
+                                <td id='totalPayMoney'>Nhấn nút tính để biết</td>
                             </tr>
                         </table>
+                        <div>
+                            <a href="#" class="btn yellow-color-green-gradient-btn">Thanh Toán</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,3 +156,123 @@
     </div>
     <!-- END SHOP CART SECTION-->
 </div>
+
+{{#section 'script'}}
+<!-- #region datatables files -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+{{!--
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script> --}}
+<!-- #endregion -->
+<script>
+    function getCheckedProductCart() {
+        let table = $('#example').DataTable();
+        //get rows have checked, get() to transform to basic array
+        let listCartId = [];
+        $('.checkBoxClass').map(function () {
+            if ($(this).prop('checked') == true) {
+                listCartId.push(this.name);
+            }
+        });
+
+        if (listCartId.length === 0) {
+            alert('Khong co san pham nao duoc chon!');
+            return;
+        }
+        //get the rows have choosen
+        totalAndCartIds = getEachTotalMoneyProduct(listCartId, table);
+        console.log('khoa3: ', totalAndCartIds);
+        return totalAndCartIds;
+    }
+
+    function getEachTotalMoneyProduct(listCartId, table) {
+        let totalAndCartIds = [];
+        $.map(listCartId, function (item) {
+            let totalAndCartId = { total: 0, cartid: "" };
+            const trClass = '#' + item;
+            let parser = new DOMParser();
+            totalAndCartId.total = parser.parseFromString(
+                table.rows(trClass).data()[0][3],
+                'text/html'
+            ).firstChild.innerText.replace(/đ/, '');
+            totalAndCartId.cartid = item;
+            totalAndCartIds.push(totalAndCartId);
+        })
+
+        return totalAndCartIds;
+    }
+
+    function caculateTotalPayMoney(listTotalMoney) {
+        let total = 0;
+        $.map(listTotalMoney, function (eachTotal) {
+            total += parseFloat(eachTotal.total); //let totalAndCartId = { total: 0, cartid: "" };
+        })
+
+        document.getElementById('totalPayMoney').innerText = total + 'đ';
+    }
+
+    function checkConstraintMinMaxInputNumber(value) {
+        if (value < 1 || value > 100) {
+            alert('so luong sach phai thich hop!');
+            return false;
+        }
+        return true;
+    }
+
+    function checkQuantiyCartDB(quantiy){
+
+    }
+    $('.inputNumberQuantity').on('change keyup', function () {
+        if (!checkConstraintMinMaxInputNumber(this.value)) {
+            this.value = 1;
+            return;
+        }
+        const mythis = this;
+        $.ajax({
+            url: "/apiUpdateQuantityCart/updateQuantityInCart",
+            method: "PUT",
+            data: { 
+                cartid: this.id,
+                quantity: this.value, 
+            },
+            success: function (quantity) {
+                mythis.value = quantity;
+            }
+        });
+        console.log(this.value);
+    });
+
+    function removeTableRow(id) {
+        $("table#example tr#" + id).remove();
+    }
+
+    $('.lni-trash').click(
+        function () {
+            if (confirm("Oke to delete!")) {
+                console.log('delete: ', this.id);
+                const id = this.id;
+                $.ajax({
+                    url: "/apiRemoveProductCart/removeProductInCart",
+                    method: "POST",
+                    data: { cartid: this.id },
+                    success: function (data, item) {
+                        removeTableRow(id);
+                        console.log(item, data);
+                    }
+                });
+
+            } else {
+                console.log('dont delete: ', this.id);
+            }
+        }
+    )
+
+    $('#calculateTotalMoney').click(
+        function () {
+            const listTotalMoney = getCheckedProductCart();
+            caculateTotalPayMoney(listTotalMoney);
+        }
+    )
+
+</script>
+{{/section}}
