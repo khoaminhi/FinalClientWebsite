@@ -51,9 +51,7 @@
                                     <td class="text-center">
                                         <div class="quote text-center mt-1">
                                             <input class='inputNumberQuantity' type="number" placeholder="1"
-                                                class="quote" min="1" max="100" value={{cartquantity}}
-                                                id='{{cartid}}'
-                                            >
+                                                class="quote" min="1" max="100" value={{cartquantity}} id='{{cartid}}'>
                                         </div>
                                     </td>
                                     <td>
@@ -88,22 +86,40 @@
                 <div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
                     <div class="calculate-shipping">
                         <h4 class="heading">Nhập địa chỉ</h4>
-                        <form>
-                            <div class="form-group">
-                                <label class="select form-control">
-                                    <select name="city" id="city">
-                                        <option>Hồ Chí Minh</option>
-                                        <option>Hà Nội</option>
-                                    </select>
-                                </label>
+                        <form onsubmit="return false">
+                            <div>
+                                <label for="customercity">Thành phố: </label>
+                                <input id="customercity" type="text" list="city" />
+                                <datalist id="city">
+                                    <option>Ho Chi Minh</option>
+                                </datalist>
                             </div>
-                            <div class="form-group">
-                                <label class="select form-control">
-                                    <select name="district" id="district">
-                                        <option>Quận 1</option>
-                                        <option>Quận 3</option>
-                                    </select>
-                                </label>
+                            <div>
+                                <label for="customerdistrict">Quận: </label>
+                                <input id="customerdistrict" type="text" list="district" />
+                                <datalist id="district">
+                                    <option>Quan 1</option>
+                                    <option>Quan 2</option>
+                                </datalist>
+                            </div>
+                            <div>
+                                <label for="customerblock">Phường: </label>
+                                <input id="customerblock" type="text" list="block" />
+                                <datalist id="block">
+                                    <option>Phường</option>
+                                </datalist>
+                            </div>
+                            <div>
+                                <label for="customerstreet">Số nhà, Đường: </label>
+                                <input id="customerstreet" type="text" list="street" />
+                                <datalist id="street">
+                                    <option>Đường</option>
+                                </datalist>
+                            </div>
+                            <div style="text-align: right;">
+                                <button type="submit" id='chooseAddres' class="btn yellow-color-green-gradient-btn">
+                                    Chọn địa chỉ
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -166,7 +182,6 @@
 <!-- #endregion -->
 <script>
     function getCheckedProductCart() {
-        let table = $('#example').DataTable();
         //get rows have checked, get() to transform to basic array
         let listCartId = [];
         $('.checkBoxClass').map(function () {
@@ -180,21 +195,17 @@
             return;
         }
         //get the rows have choosen
-        totalAndCartIds = getEachTotalMoneyProduct(listCartId, table);
+        totalAndCartIds = getEachTotalMoneyProduct(listCartId);
         console.log('khoa3: ', totalAndCartIds);
         return totalAndCartIds;
     }
 
-    function getEachTotalMoneyProduct(listCartId, table) {
+    function getEachTotalMoneyProduct(listCartId) {
         let totalAndCartIds = [];
         $.map(listCartId, function (item) {
             let totalAndCartId = { total: 0, cartid: "" };
             const trClass = '#' + item;
-            let parser = new DOMParser();
-            totalAndCartId.total = parser.parseFromString(
-                table.rows(trClass).data()[0][3],
-                'text/html'
-            ).firstChild.innerText.replace(/đ/, '');
+            totalAndCartId.total = $('table#example tr' + trClass + ' td:eq(3) h4')[0].innerText;
             totalAndCartId.cartid = item;
             totalAndCartIds.push(totalAndCartId);
         })
@@ -219,9 +230,21 @@
         return true;
     }
 
-    function checkQuantiyCartDB(quantiy){
-
+    function setAgainTotalProductMoney(id, quantity) {
+        let table = $('#example').DataTable();
+        const tableRowId = '#' + id;
+        const parser = new DOMParser();
+        let price = parser.parseFromString(
+            table.rows(tableRowId).data()[0][1],
+            'text/html'
+        ).firstChild.innerText.replace(/đ/, '');
+        price = parseFloat(price);
+        quantity = parseFloat(quantity);
+        const total = price * quantity;
+        const totalString = total + 'đ';
+        $('table#example tr' + tableRowId + ' td:eq(3) h4')[0].innerText = totalString;
     }
+
     $('.inputNumberQuantity').on('change keyup', function () {
         if (!checkConstraintMinMaxInputNumber(this.value)) {
             this.value = 1;
@@ -231,12 +254,13 @@
         $.ajax({
             url: "/apiUpdateQuantityCart/updateQuantityInCart",
             method: "PUT",
-            data: { 
+            data: {
                 cartid: this.id,
-                quantity: this.value, 
+                quantity: this.value,
             },
             success: function (quantity) {
                 mythis.value = quantity;
+                setAgainTotalProductMoney(mythis.id, quantity);
             }
         });
         console.log(this.value);
@@ -271,6 +295,28 @@
         function () {
             const listTotalMoney = getCheckedProductCart();
             caculateTotalPayMoney(listTotalMoney);
+        }
+    )
+
+    $('#chooseAddres').on('click',
+        function () {
+            const city = document.getElementById('customercity').value;
+            const district = document.getElementById('customerdistrict').value;
+            const block = document.getElementById('customerblock').value;
+            const street = document.getElementById('customerstreet').value;
+            $.ajax({
+                url: "/apiPaymentInvoice/updateInvoiceAddr",
+                method: "PUT",
+                data: {
+                    city: city,
+                    district: district,
+                    block: block,
+                    street: street
+                },
+                success: function (addr) {
+                    console.log('address', addr);
+                }
+            });
         }
     )
 

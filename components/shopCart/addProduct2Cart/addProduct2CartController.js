@@ -1,25 +1,16 @@
-const productListService = require('./addProduct2CartService')
-const {models} = require('./../../../models');
-const category = require('./../../../models/category');
-const e = require('express');
+const addProductCartService = require('./addProduct2CartService')
 
-exports.productList = async (req, res) => {
-    const categoryid = req.query.categoryid;
-    const sort = req.query.sort;
-    const page = req.query.page;
-    const search = req.query.search;
-    const publisherid = req.query.publisherid;
-    if(categoryid)
-    {
-        const all_books = await productListService.list();
-        books = []
-        for (let i=0; i < all_books.length; i++)
-        {
-            if(all_books[i]['categoryid'] === categoryid)
-            {
-                books.push(all_books[i])
-            }
-        }
-        res.render('productList', {books});
+exports.addProductCartController = async (req, res) => {
+    const {bookid} = req.body;
+    const unauthid = req.session.unauthId;
+    try {
+        result = await addProductCartService.addProductCartService(bookid, unauthid);
+        res.status(200).json(result);
+        console.log('add product', result);
+    } catch (error) {
+        res.status(500).json({
+            status: 'fail',
+            message: error.message,
+        });
     }
 }

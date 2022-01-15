@@ -21,6 +21,8 @@ const signupRouter = require('./components/signup/signupRouter');
 const totalPayCart = require('./api/cart');
 const apiRemoveProductCart = require('./components/shopCart/removeProductInCart/index');
 const apiUpdateQuantityCart = require('./components/shopCart/updateProductInCart/index');
+const apiPaymentInvoice = require('./components/shopCart/paymentInvoice/index');
+const apiAddProductCart = require('./components/shopCart/addProduct2Cart/index');
 
 
 const app = express();
@@ -78,7 +80,8 @@ app.use('/signup', signupRouter);
 app.use('/totalPayCart', totalPayCart);
 app.use('/apiRemoveProductCart', apiRemoveProductCart);
 app.use('/apiUpdateQuantityCart', apiUpdateQuantityCart);
-
+app.use('/apiPaymentInvoice', apiPaymentInvoice);
+app.use('/apiAddProductCart', apiAddProductCart);
 
 
 // catch 404 and forward to error handler

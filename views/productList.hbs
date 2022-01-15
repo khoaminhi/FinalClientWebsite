@@ -77,7 +77,7 @@
                                     <div class="item p-item-img">
                                             <img src="book-shop\img\book-1.jpg" alt="images">
                                         <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="/shopCart">
+                                            <a class="listing-cart-icon addProductCart" id="{{id}}">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                         </div>
@@ -85,7 +85,7 @@
                                     <div class="item p-item-img">
                                         <img src="book-shop\img\book-1-1.jpg" alt="images">
                                         <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="/shopCart">
+                                            <a class="listing-cart-icon" >
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                         </div>
@@ -120,3 +120,29 @@
     </div>
 </div>
 <!--Product Line Up End-->
+
+
+{{#section 'script'}}
+<!-- #region datatables files -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+{{!--
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script> --}}
+<!-- #endregion -->
+<script>
+    $('.addProductCart').on('click',
+        function () {
+            $.ajax({
+                url: "/apiAddProductCart/add",
+                method: "POST",
+                data: {
+                    bookid: this.id,
+                },
+                success: function (data) {
+                    console.log('addProdcuctCart', data);
+                }
+            });
+        }
+    )
+</script>
+{{/section}}
