@@ -9,73 +9,32 @@ exports.productList = async (req, res) => {
     const page = req.query.page;
     const search = req.query.search;
     const publisherid = req.query.publisherid;
-    if(categoryid)
-    {
-        const all_books = await productListService.list();
-        books = []
-        for (let i=0; i < all_books.length; i++)
-        {
-            if(all_books[i]['categoryid'] === categoryid)
-            {
-                books.push(all_books[i])
-            }
-        }
+
+    if(page){
+        const books = await productListService.listPages(page)
         res.render('productList', {books});
     }
-    else if(publisherid)
-    {
-        const all_books = await productListService.list();
-        books = []
-        for (let i=0; i < all_books.length; i++)
-        {
-            if(all_books[i]['publisherid'] === publisherid)
-            {
-                books.push(all_books[i])
-            }
-        }
+    else if(categoryid){
+        const books = await productListService.listCategories(categoryid);
         res.render('productList', {books});
     }
-    else if(sort === '1')
-    {
-        const all_books = await productListService.list();
-        books = []
-        books = all_books.sort(function(a,b) {
-            return b.price - a.price
-        });
+    else if(publisherid){
+        const books = await productListService.listPublishers(publisherid);
         res.render('productList', {books});
     }
-    else if(sort === '2')
-    {
-        const all_books = await productListService.list();
-        books = []
-        books = all_books.sort(function(a,b) {
-            return a.price - b.price
-        });
+    else if(sort === '1'){
+        const books = await productListService.listIncrease();
+        res.render('productList', {books});
+    }
+    else if(sort === '2'){
+        const books = await productListService.listDecrease();
         res.render('productList', {books});
     }
     else if(search){
-        const all_books = await productListService.list();
-        books = [];
-        for (let i=0; i < all_books.length; i++)
-        {
-            if(all_books[i]['categoryid'].includes(search))
-            {
-                books.push(all_books[i])
-            }
-            else if (all_books[i]['name'].includes(search))
-            {
-                books.push(all_books[i])
-            }
-        }
+        const books = await productListService.listSearch(search);
         res.render('productList', {books});
     }
-    else if(page){
-        const itemPerPage = 9;
-        const books = await models.books.findAll({offset: parseInt(page)*itemPerPage, limit: itemPerPage});
-        res.render('productList', {books});
-    }
-    else
-    {
+    else{
         const books = await productListService.list();
         res.render('productList', {books});
     }
