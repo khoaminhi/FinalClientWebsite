@@ -8,6 +8,7 @@ exports.addProductCartService = (bookid, unauthid) => {
             customersessionid: unauthid,
             quantity: 1,
             createddate: new Date(),
+            isarchived: 2,
         },
         {
             returning: true,

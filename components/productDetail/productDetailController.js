@@ -1,19 +1,35 @@
 const productDetailService = require('./productDetailService')
-const {models} = require('../../models')
+const { models } = require('../../models')
 
 exports.productDetail = async (req, res, next) => {
     const id = req.params.id;
-    const page = req.query.page;
-    if(page){
-        const book = await productDetailService.findBook(id);
-        const comments = await productDetailService.findComments(id, page);
-        const related_books = await models.books.findAll({where: {categoryid: book['categoryid']}, raw: true})
-        res.render('productDetail', {book, comments, related_books});
+    const book = await productDetailService.findBook(id);
+    const related_books = await models.books.findAll({ where: { categoryid: book['categoryid'] }, raw: true })
+    res.render('productDetail', { book, related_books });
+}
+
+exports.productComment = async (req, res) => {
+    const {bookid} = req.query;
+    try {
+        const khoacomments = await productDetailService.findComments(bookid);
+        res.status(200).json(khoacomments);
+    } catch (error) {
+        res.status(500).json({
+            status: 'fail',
+            message: error.message,
+        });
     }
-    else{
-        const book = await productDetailService.findBook(id);
-        const comments = await productDetailService.findComments(id, 0);
-        const related_books = await models.books.findAll({where: {categoryid: book['categoryid']}, raw: true})
-        res.render('productDetail', {book, comments, related_books});
+}
+
+exports.addComment = async (req, res) => {
+    const {bookid, customerid, comment, rate} = req.body;
+    try {
+        const khoacomments = await productDetailService.createComment(bookid, customerid, comment, rate);
+        res.status(201).json(khoacomments);
+    } catch (error) {
+        res.status(500).json({
+            status: 'fail',
+            message: error.message,
+        });
     }
 }

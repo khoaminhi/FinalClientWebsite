@@ -76,10 +76,10 @@
                                         <a class="nav-link" href="/login/logout">LOGOUT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">Hello, {{user.username}}</a>
+                                        <a class="nav-link" id="{{id}}" href="">Hello, {{user.username}}</a>
                                     </li>
     
-                                    <li class="nav-item dropdown static">
+                                    <li class="nav-item dropdown static" {{user.id}}>
                                         <a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Account Info </a>
                                         <ul class="dropdown-menu megamenu flexable-megamenu">
                                             <li>
@@ -88,7 +88,7 @@
                                                         <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
                                                             <h5 class="dropdown-title"> Name </h5>
                                                             <ul>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="/productList">{{user.username}}</a></li>
+                                                                <li><i class="lni-angle-double-right right-arrow" ></i><a class="dropdown-item" href="/productList">{{user.username}} </a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
@@ -100,7 +100,7 @@
                                                         <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
                                                             <h5 class="dropdown-title"> Email </h5>
                                                             <ul>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="/productList">{{user.email}}</a></li>
+                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item getCustomerEmail" href="/productList">{{user.email}}</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">

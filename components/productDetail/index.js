@@ -5,4 +5,6 @@ const ProductController = require('./productDetailController')
 // router.get('/', ProductController.list)
 router.use(express.static('public'));
 router.get('/:id', ProductController.productDetail);
+router.get('/comments/get', ProductController.productComment);
+router.post('/addcomment', ProductController.addComment);
 module.exports = router;

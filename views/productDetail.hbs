@@ -9,16 +9,18 @@
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Categories</a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="javascript:void(0)">Books</a></li>
-                            <li class="breadcrumb-item"><a class="active" href="javascript:void(0)">{{book.name}}</a></li>
+                            <li class="breadcrumb-item"><a class="active" href="javascript:void(0)">{{book.name}}</a>
+                            </li>
                         </ol>
                     </nav>
                     <div class="pro-detail-sec row">
                         <div class="col-12">
                             <h4 class="pro-heading text-center text-lg-left">{{book.name}}</h4>
-                            {{!-- <p class="pro-text text-center text-lg-left">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p> --}}
+                            {{!-- <p class="pro-text text-center text-lg-left">Neque porro quisquam est qui dolorem
+                                ipsum quia dolor sit amet, consectetur, adipisci velit.</p> --}}
                         </div>
                     </div>
-               
+
 
                     <div class="row product-list product-detail">
 
@@ -26,16 +28,25 @@
                             <div class="wrapper">
                                 <div class="Gallery swiper-container img-magnifier-container" id="gallery">
                                     <div class="swiper-wrapper myimgs">
-                                        <div class="swiper-slide"> <a href="book-shop/img/book-1-1.jpg" data-fancybox="1" title="Zoom In"><img class="myimage" src="book-shop/img/book-1-1.jpg" alt="gallery"></a></div>
-                                        <div class="swiper-slide"> <a href="book-shop/img/book-1.jpg" data-fancybox="2" title="Zoom In"><img class="myimage" src="book-shop/img/book-1.jpg" alt="thumnails"></a></div>
-                                        <div class="swiper-slide"> <a href="book-shop/img/book-1-2.jpg" data-fancybox="3" title="Zoom In"><img class="myimage" src="book-shop/img/book-1-2.jpg" alt="thumnails"></a></div>
+                                        <div class="swiper-slide"> <a href="book-shop/img/book-1-1.jpg"
+                                                data-fancybox="1" title="Zoom In"><img class="myimage"
+                                                    src="book-shop/img/book-1-1.jpg" alt="gallery"></a></div>
+                                        <div class="swiper-slide"> <a href="book-shop/img/book-1.jpg" data-fancybox="2"
+                                                title="Zoom In"><img class="myimage" src="book-shop/img/book-1.jpg"
+                                                    alt="thumnails"></a></div>
+                                        <div class="swiper-slide"> <a href="book-shop/img/book-1-2.jpg"
+                                                data-fancybox="3" title="Zoom In"><img class="myimage"
+                                                    src="book-shop/img/book-1-2.jpg" alt="thumnails"></a></div>
                                     </div>
                                 </div>
                                 <div class="Thumbs swiper-container" id="thumbs">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide"> <img src="book-shop/img/book-1-1.jpg" alt="thumnails"></div>
-                                        <div class="swiper-slide"> <img src="book-shop/img/book-1.jpg" alt="thumnails"></div>
-                                        <div class="swiper-slide"> <img src="book-shop/img/book-1-2.jpg" alt="thumnails"></div>
+                                        <div class="swiper-slide"> <img src="book-shop/img/book-1-1.jpg"
+                                                alt="thumnails"></div>
+                                        <div class="swiper-slide"> <img src="book-shop/img/book-1.jpg" alt="thumnails">
+                                        </div>
+                                        <div class="swiper-slide"> <img src="book-shop/img/book-1-2.jpg"
+                                                alt="thumnails"></div>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +74,8 @@
                                     <span class="plus bg-dark"><i class="lni-plus"></i></span>
                                 </div>
                                 <div class="col-12 col-lg-9">
-                                    <button class="btn green-color-yellow-gradient-btn">ADD TO CART</button>
+                                    <button class="btn green-color-yellow-gradient-btn addProductCart"
+                                        id='{{book.id}}'>Thêm Vào Giỏ</button>
                                 </div>
                             </div>
 
@@ -73,20 +85,35 @@
                             <div class="product-tags-list">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><p class="d-inline">SKU: <span>00012</span></p></li>
-                                        <li class="breadcrumb-item"><span class="d-inline">Categories: <a href="javascript:void(0)">{{book.categoryid}}</a><span class="comma-separtor">,</span><a href="javascript:void(0)">{{book.categoryid}}</a></span></li>
-                                        {{!-- <li class="breadcrumb-item" aria-current="page"><p class="d-inline">Tags: <a href="javascript:void(0)">Fantasy</a><span class="comma-separtor">,</span><a href="javascript:void(0)">Classic</a></p></li> --}}
+                                        <li class="breadcrumb-item">
+                                            <p class="d-inline">SKU: <span>00012</span></p>
+                                        </li>
+                                        <li class="breadcrumb-item"><span class="d-inline">Categories: <a
+                                                    href="javascript:void(0)">{{book.categoryid}}</a><span
+                                                    class="comma-separtor">,</span><a
+                                                    href="javascript:void(0)">{{book.categoryid}}</a></span></li>
+                                        {{!-- <li class="breadcrumb-item" aria-current="page">
+                                            <p class="d-inline">Tags: <a href="javascript:void(0)">Fantasy</a><span
+                                                    class="comma-separtor">,</span><a
+                                                    href="javascript:void(0)">Classic</a></p>
+                                        </li> --}}
                                     </ol>
                                 </nav>
                             </div>
 
                             {{!-- <div class="share-product-details">
                                 <ul class="share-product-icons">
-                                    <li><p>Share Link:</p></li>
-                                    <li><a href="javascript:void(0)" class="facebook-bg-hvr"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                                    <li><a href="javascript:void(0)" class="twitter-bg-hvr"><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-                                    <li><a href="javascript:void(0)" class="linkedin-bg-hvr"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                                    <li><a href="javascript:void(0)" class="instagram-bg-hvr"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <p>Share Link:</p>
+                                    </li>
+                                    <li><a href="javascript:void(0)" class="facebook-bg-hvr"><i
+                                                class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:void(0)" class="twitter-bg-hvr"><i class="fab fa-twitter"
+                                                aria-hidden="true"></i></a> </li>
+                                    <li><a href="javascript:void(0)" class="linkedin-bg-hvr"><i
+                                                class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:void(0)" class="instagram-bg-hvr"><i
+                                                class="fab fa-instagram" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div> --}}
                         </div>
@@ -96,145 +123,61 @@
 
                                 <ul class="col-12 nav nav-tabs" id="myTab" role="tablist">
                                     <li class="col-4 nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Project Description</a>
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                                            role="tab" aria-controls="home" aria-selected="true">Project Description</a>
                                     </li>
                                     <li class="col-4 nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Additional Information</a>
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
+                                            role="tab" aria-controls="profile" aria-selected="false">Additional
+                                            Information</a>
                                     </li>
                                     <li class="col-4 nav-item">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Customer Reviews</a>
+                                        <a class="nav-link customerReviewClick" id="contact-tab" data-toggle="tab"
+                                            href="#contact" role="tab" aria-controls="contact"
+                                            aria-selected="false">ĐÁNH GIÁ</a>
                                     </li>
                                 </ul>
                                 <div class="col-12 tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <p class="product-tab-description text-center text-lg-left">{{book.description}}</p>
-                                        {{!-- <p class="product-tab-description text-center text-lg-left">If you are a small business and you are interested in small rebranding then this is a perfect plan for you, having Five years experience in Blogging, photographing, Disgning and love to cycling,Writting,Singing and Traveling around the world</p> --}}
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                        aria-labelledby="home-tab">
+                                        <p class="product-tab-description text-center text-lg-left">{{book.description}}
+                                        </p>
                                     </div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">First</th>
-                                                        <th scope="col">Last</th>
-                                                        <th scope="col">Handle</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                        <td>@mdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Jacob</td>
-                                                        <td>Thornton</td>
-                                                        <td>@fat</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Larry</td>
-                                                        <td>the Bird</td>
-                                                        <td>@twitter</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">4</th>
-                                                        <td>Alex</td>
-                                                        <td>Thorn</td>
-                                                        <td>@mdo</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                    <div class="tab-pane fade reviews" id="contact" role="tabpanel"
+                                        aria-labelledby="contact-tab">
+                                        <div id="insertcommenthtml">
+
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade reviews" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                        {{#each comments}}
-                                        <div class="media">
-                                            <div class="row no-gutter">
-                                                {{!-- <div class="col-12 col-lg-2 p-0">
-
-                                                    <div class="row no-gutters">
-                                                        <div class="col-12 d-flex  justify-content-center">
-                                                            <img src="book-shop/img/user.jpg" alt="Generic placeholder image">
-                                                        </div>
-                                                        <div class="col-12 d-flex mt-2 justify-content-center">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                </div> --}}
-
-                                                <div class="col-12 col-lg-10 p-0">
-                                                    <div class="media-body">
-                                                        <span class="text-center text-lg-left d-block">{{customerid}}</span>
-                                                        {{!-- <h5 class="mb-2 text-center text-lg-left">{{customerid}}</h5> --}}
-                                                        <p class="text-center text-lg-left">{{comment}}</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        {{/each}}
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination float-right mb-2">
-                                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                                <li class="page-item"><a class="page-link" href="/productDetail/{{book.id}}?page=0">0</a></li>
-                                                <li class="page-item"><a class="page-link" href="/productDetail/{{book.id}}?page=1">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="/productDetail/{{book.id}}?page=2">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                            </ul>
-                                        </nav> 
                                         <div class="row pl-2 pr-2">
                                             <div class="col-12 d-flex mb-4 mt-3">
-                                                <h5 class="text-nowrap">Add Review</h5>
+                                                <h5 class="text-nowrap">Thêm bình luận</h5>
                                                 <hr class="w-100 ml-5">
                                             </div>
                                             <div class="col-12">
                                                 <form class="getin_form border-form" id="register">
                                                     <div class="row">
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <div class="form-group bottom35">
-                                                                <input type="text" class="form-control" placeholder="Name*" required="" id="registerName">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <div class="form-group bottom35">
-                                                                <input type="email" class="form-control" placeholder="Email*" required="" id="registerEmail">
-                                                            </div>
-                                                        </div>
                                                         <div class="col-12 col-lg-2 text-center text-lg-left">
-                                                            <h5 class="text-nowrap">Your Rating</h5>
+                                                            <h5 class="text-nowrap">Rating</h5>
                                                         </div>
                                                         <div class="col-12 col-lg-10 text-center text-lg-left">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
+                                                            <input type="number" id="getRate" min="1" max="5"
+                                                                placeholder="5">
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <!--                                                                            <label for="comment">Your Rating:</label>-->
-                                                                <textarea class="form-control textareaclass" rows="5" id="comment" placeholder="Your Review"></textarea>
+                                                                <textarea class="form-control textareaclass" rows="5"
+                                                                    id="getComment"
+                                                                    placeholder="Bình luận của bạn"></textarea>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-12 mt-3">
-                                                            <div class="form-group d-flex justify-content-center d-lg-block">
-                                                                <button class="text-center btn green-color-yellow-gradient-btn">Add Review</button>
+                                                            <div
+                                                                class="form-group d-flex justify-content-center d-lg-block">
+                                                                <button type="button"
+                                                                    class="text-center btn green-color-yellow-gradient-btn addProductComment">
+                                                                    Thêm Bình Luận
+                                                                </button>
                                                             </div>
                                                         </div>
 
@@ -265,7 +208,7 @@
                 <div class="col-12 mb-4">
                     <h1>Related Books</h1>
                 </div>
-                
+
                 <div class="col-12">
                     <div class="lastest_featured_products owl-carousel owl-theme">
                         {{#each related_books}}
@@ -274,7 +217,8 @@
                             <div class="card">
                                 <span class="product-type">NEW</span>
                                 <div class="image-holder">
-                                    <a href="book-shop/img/l1.jpg" data-fancybox="lastest_product" data-title="Shirt Name">
+                                    <a href="book-shop/img/l1.jpg" data-fancybox="lastest_product"
+                                        data-title="Shirt Name">
                                         <img src="book-shop/img/l1.jpg" class="card-img-top" alt="Lastest Arrivals 1">
                                     </a>
                                 </div>
@@ -299,3 +243,85 @@
     <!--END LATEST ARRIVALS-->
 
 </div>
+
+{{#section 'script'}}
+<!-- #region datatables files -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+{{!--
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script> --}}
+<!-- #endregion -->
+<script>
+    $('.addProductComment').on('click',
+        function () {
+            let bookid = '{{book.id}}';
+            let customerid = $('.getCustomerEmail')[0].innerHTML;
+            let rate = $('#getRate')[0].value;
+            let comment = $('#getComment')[0].value;
+            $.ajax({
+                url: "/productDetail/addcomment",
+                method: "POST",
+                data: {
+                    bookid,
+                    customerid,
+                    comment,
+                    rate,
+                },
+                success: function (data) {
+                    reloadComment();
+                    console.log('addProdcuctCart', data);
+                }
+            });
+        }
+    )
+    $('.addProductCart').on('click',
+        function () {
+            let bookid = '{{book.id}}';
+            $.ajax({
+                url: "/apiAddProductCart/add",
+                method: "POST",
+                data: {
+                    bookid,
+                },
+                success: function (data) {
+                    alert('Bạn đã thêm sách thành công!');
+                    console.log('addProdcuctCart', data);
+                }
+            });
+        }
+    )
+    function reloadComment() {
+        let bookid = '{{book.id}}';
+        $.ajax({
+            url: "/productDetail/comments/get",
+            method: "GET",
+            data: {
+                bookid,
+            },
+            success: function (comments) {
+                let html = "";
+                let rate = 5;
+                for (let c of comments[0]) {
+                    let crate = '<ul class="user-rating">';
+                    rate = parseInt(c.rate);
+                    for (let i = 0; i < rate; i++) {
+                        crate += '<li><i class="lni-star-filled"></i></li>';
+                    }
+                    crate += '</ul>';
+                    let cdate = `<span> ${c.date} </span> `;
+                    let cname = `<h4> ${c.name} (${cdate}) ${crate}</h4>`;
+                    let ccomment = `<p> ${c.comment} </p>`;
+
+                    html += '<div>';
+                    html += cname + ccomment;
+                    html += '</div> <br>';
+                }
+                $('#insertcommenthtml').html(html);
+                console.log('addProdcuctCart', comments);
+            }
+        });
+    }
+
+    $('.customerReviewClick').on('click',reloadComment());
+</script>
+{{/section}}
