@@ -2,12 +2,12 @@ const {models} = require('../../models');
 const books = require('../../models/books');
 
 exports.list = (page = 0, itemPerPage = 9) => {
-    return models.books.findAll({offset: page*itemPerPage, limit: itemPerPage});
+    return models.books.findAll({offset: page*itemPerPage, limit: itemPerPage, raw: true});
 }
 
 exports.listPages = async (page) => {
     const itemPerPage = 9;
-    const books = await models.books.findAll({offset: parseInt(page)*itemPerPage, limit: itemPerPage});
+    const books = await models.books.findAll({offset: parseInt(page)*itemPerPage, limit: itemPerPage, raw: true});
     return books;
 }
 
