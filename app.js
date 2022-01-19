@@ -23,6 +23,8 @@ const apiRemoveProductCart = require('./components/shopCart/removeProductInCart/
 const apiUpdateQuantityCart = require('./components/shopCart/updateProductInCart/index');
 const apiPaymentInvoice = require('./components/shopCart/paymentInvoice/index');
 const apiAddProductCart = require('./components/shopCart/addProduct2Cart/index');
+const registerRouter = require('./components/accountCustomer/registerAccount/index');
+const updateAccountRouter = require('./components/accountCustomer/updateAccount/index');
 
 
 const app = express();
@@ -82,6 +84,9 @@ app.use('/apiRemoveProductCart', apiRemoveProductCart);
 app.use('/apiUpdateQuantityCart', apiUpdateQuantityCart);
 app.use('/apiPaymentInvoice', apiPaymentInvoice);
 app.use('/apiAddProductCart', apiAddProductCart);
+app.use('/register', registerRouter);
+app.use('/update', updateAccountRouter);
+
 
 
 // catch 404 and forward to error handler

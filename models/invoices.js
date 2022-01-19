@@ -30,6 +30,10 @@ module.exports = function(sequelize, DataTypes) {
     isarchived: {
       type: DataTypes.CHAR(1),
       allowNull: true
+    },
+    address: {
+      type: DataTypes.STRING(200),
+      allowNull: true
     }
   }, {
     sequelize,

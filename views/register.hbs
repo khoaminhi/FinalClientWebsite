@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="row mb-4 px-3">
+                        <h6 class="mb-0 mr-4 mt-2">SIGN UP</h6>
+                </div>
+                <form method="POST" class="form" id="form-register">
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="text" name="emailcustomer" id="email" value="kp6630924@gmail.com"/>
+                        <span class="form-message"></span>
+                    </div>
+                    <div>
+                        <input type="submit" value="Đăng Ký"/>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>
+<script src="/book-shop/js/validator.js"></script>
+<script>
+    Validator({
+        form: "#form-1",
+        rules: [
+            Validator.isEmail("#email"),
+            Validator.minLength("#password", 3),
+            Validator.isConfirmed("#password-confirm", function(){
+                return document.querySelector("#form-1 #password").value;
+            })
+        ]
+    });
+</script>

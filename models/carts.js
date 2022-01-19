@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     customerid: {
       type: DataTypes.UUID,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'customers',
         key: 'id'
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     customersessionid: {
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: true
     },
     cartid: {
       type: DataTypes.UUID,
